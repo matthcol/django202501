@@ -83,7 +83,7 @@ DATABASES = {
     "default": {
         "ENGINE": "mssql",
         # "NAME": "dbmoviedev",
-        "NAME": "dbmoviedata",
+        "NAME": "dbmoviedata2",
         "HOST": "localhost",
         "PORT": 1433,
         "USER": "sa",

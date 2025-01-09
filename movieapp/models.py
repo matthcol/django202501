@@ -30,16 +30,16 @@ class Movie(models.Model):
     director = models.ForeignKey(
         # db_column=<custom fk name>
         to='Person',
-        related_name='movies_directed', 
+        related_name='directed_movies', 
         null=True, blank=True,
         on_delete=models.DO_NOTHING # DELETE, SET_NULL
     )
 
     actors = models.ManyToManyField(
         to='Person',
-        related_name='movies_played', 
-        through='Play', # or db_table without explicit class
-        through_fields=('movie_id', 'actor_id')
+        related_name='played_movies', 
+        through='Play', 
+        through_fields=('movie', 'actor')
     )
 
     def __str__(self):
@@ -55,6 +55,9 @@ class Person(models.Model):
     name = models.CharField(max_length=150)
     birthdate = models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return f"{self.name}#{self.pk}"
+
     
 # Association explicit Class, advantages:
 # - access to assocation extra columns
@@ -65,8 +68,8 @@ class Play(models.Model):
         db_table = 'play'
 
     # implicit or explicit PK column (id)
-    movie = models.ForeignKey(to=Movie, on_delete=models.DO_NOTHING) # custom: db_column=
-    actor = models.ForeignKey(to=Person, on_delete=models.DO_NOTHING) # custom: db_column=
+    movie = models.ForeignKey(to=Movie, on_delete=models.CASCADE) # custom: db_column=
+    actor = models.ForeignKey(to=Person, on_delete=models.CASCADE) # custom: db_column=
     role = models.CharField(max_length=100, null=True, blank=True)
     
 

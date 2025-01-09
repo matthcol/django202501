@@ -1,0 +1,1 @@
+alter table play add id bigint identity;
