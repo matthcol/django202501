@@ -1,0 +1,1 @@
+EXEC sp_rename 'dbo.play.actor_id', 'person_id', 'COLUMN';
