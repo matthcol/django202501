@@ -70,3 +70,8 @@ ${env:DJANGO_ALLOW_ASYNC_UNSAFE}="True"
 export DJANGO_ALLOW_ASYNC_UNSAFE=True
 ```
 
+### Templates
+- template ref: https://docs.djangoproject.com/en/5.1/ref/templates/
+- builtin tags and filters: https://docs.djangoproject.com/en/5.1/ref/templates/builtins/
+- custom tags and filters: https://docs.djangoproject.com/en/5.1/howto/custom-template-tags/
+

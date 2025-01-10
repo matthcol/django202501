@@ -1,0 +1,24 @@
+{% load movie_filters %}
+
+<h1>Accueil films</h1>
+
+<div>Nombre total de films: {{ movie_count }}</div>
+
+<div>
+Derniers films (il y a 10 ans 😉): <ul>
+{% for movie in movie_list %}
+    <li>{{ movie.title }} ({{ movie.year}}), 
+        durée (mn): {{ movie.duration|default_if_none:"#NA" }},
+        durée: {{ movie.duration|duration_or_default:"inconnue" }}
+        <div class="synopsis">
+        {% if movie.duration is not None %}
+        <span>synopsis:</span> {{ movie.synopsis }}
+        {% else %}
+        pas de synopsis
+        {% endif %}
+        </div>
+    </li>
+{% endfor %}
+</ul>
+</div>
+
